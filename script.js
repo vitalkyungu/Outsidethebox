@@ -27,11 +27,15 @@ form.addEventListener('submit', (e) => {
 // Display the photos stored in photoData
 function displayPhotos() {
     ul.innerHTML = '';
-    photoData.forEach((photo) => {
+    photoData.forEach((photo, index) => {
         const li = document.createElement('li');
         const img = document.createElement('img');
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete';
+        deleteButton.addEventListener('click', () => deletePhoto(index));
         img.src = photo.src;
         li.appendChild(img);
+        li.appendChild(deleteButton);
         ul.appendChild(li);
     });
 }
@@ -39,18 +43,9 @@ function displayPhotos() {
 // Call displayPhotos() to initially display any previously uploaded photos
 displayPhotos();
 
-
-// Display the photos stored in photoData
-function displayPhotos() {
-    ul.innerHTML = '';
-    photoData.forEach((photo) => {
-        const li = document.createElement('li');
-        const img = document.createElement('img');
-        img.src = photo.src;
-        li.appendChild(img);
-        ul.appendChild(li);
-    });
+// Delete a photo from photoData and localStorage
+function deletePhoto(index) {
+    photoData.splice(index, 1);
+    localStorage.setItem('photoData', JSON.stringify(photoData));
+    displayPhotos();
 }
-
-// Call displayPhotos() to initially display any previously uploaded photos
-displayPhotos();
