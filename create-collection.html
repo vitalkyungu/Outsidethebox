@@ -4,31 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OutsideThebox</title>
+    <title>Create Collection</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <h1>Photo Gallery</h1>
+        <h1>Create Collection</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Upload</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="create-collection.html">Create Collection</a></li>
             </ul>
         </nav>
     </header>
     <main>
-
-        <section id="add-photos">
-            <h2>Add Photos</h2>
-            <form>
-                <label for="photo">Choose a photo:</label>
-                <input type="file" id="photo" name="photo">
-                <button type="submit">Upload</button>
-            </form>
-        </section>
+        <form id="create-collection-form">
+            <label for="collection-name">Collection Name:</label>
+            <input type="text" id="collection-name" name="collection-name">
+            <button type="submit">Create Collection</button>
+        </form>
     </main>
     <script src="script.js"></script>
 </body>
