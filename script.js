@@ -31,12 +31,15 @@ function displayPhotos() {
         const li = document.createElement('li');
         const img = document.createElement('img');
         const deleteButton = document.createElement('button');
+        const downloadButton = document.createElement('button');
         deleteButton.innerText = 'Delete';
         deleteButton.addEventListener('click', () => deletePhoto(index));
+        downloadButton.innerText = 'Download';
+        downloadButton.addEventListener('click', () => downloadPhoto(photo.src));
         img.src = photo.src;
         li.appendChild(img);
         li.appendChild(deleteButton);
-        li.appendChild(createDownloadButton(photo.src)); // Add download button to li element
+        li.appendChild(downloadButton);
         ul.appendChild(li);
     });
 }
@@ -51,11 +54,11 @@ function deletePhoto(index) {
     displayPhotos();
 }
 
-// Created a download button for a photo
-function createDownloadButton(url) {
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'photo.jpg';
-    a.textContent = 'Download';
-    return a;
+// Download a photo from the gallery
+function downloadPhoto(photoSrc) {
+    // Create a temporary anchor element to download the photo
+    const downloadLink = document.createElement('a');
+    downloadLink.href = photoSrc;
+    downloadLink.download = 'photo.jpg';
+    downloadLink.click();
 }
