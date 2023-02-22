@@ -36,6 +36,7 @@ function displayPhotos() {
         img.src = photo.src;
         li.appendChild(img);
         li.appendChild(deleteButton);
+        li.appendChild(createDownloadButton(photo.src)); // Add download button to li element
         ul.appendChild(li);
     });
 }
@@ -48,4 +49,13 @@ function deletePhoto(index) {
     photoData.splice(index, 1);
     localStorage.setItem('photoData', JSON.stringify(photoData));
     displayPhotos();
+}
+
+// Created a download button for a photo
+function createDownloadButton(url) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'photo.jpg';
+    a.textContent = 'Download';
+    return a;
 }
