@@ -1,0 +1,18 @@
+{
+    "page1": {
+        "title": "Welcome to Page 1",
+        "content": "This is the content of page 1."
+    },
+    "page2": {
+        "title": "Welcome to Page 2",
+        "content": "This is the content of page 2."
+    },
+    "page3": {
+        "title": "Welcome to Page 3",
+        "content": "This is the content of page 3."
+    },
+    "page4": {
+        "title": "Welcome to Page 4",
+        "content": "This is the content of page 4."
+    }
+}
