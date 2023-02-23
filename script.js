@@ -80,37 +80,42 @@ createCollectionForm.addEventListener('submit', (event) => {
 
 // Display the photos stored in photoData for a specific collection
 function displayPhotos(collectionName) {
-    ul.innerHTML = '';
+    ul.empty();
     const collection = photoData.collections.find((c) => c.name === collectionName);
     if (collection) {
         collection.photos.forEach((photo, index) => {
-            // Create the li, img and delete button elements
-            // ...
+            // Create the li and img elements
+            const li = $('<li></li>');
+            const img = $('<img>').attr('src', photo.src);
 
             // Add a new download button to download the photo
-            const downloadButton = document.createElement('button');
-            downloadButton.innerText = 'Download';
-            downloadButton.addEventListener('click', () => downloadPhoto(photo.src));
+            const downloadButton = $('<button>Download</button>');
+            downloadButton.click(() => downloadPhoto(photo.src));
+
             // Add the download button to the li element
-            li.appendChild(downloadButton);
+            li.append(img, downloadButton);
 
             // Add the li element to the ul element
-            ul.appendChild(li);
+            ul.append(li);
         });
     }
 }
 
+
 // Function to download a photo
 function downloadPhoto(src) {
-    const link = document.createElement('a');
-    link.href = src;
-    link.download = 'photo.jpg';
-    link.click();
+    const link = $('<a>').attr({
+        href: src,
+        download: 'photo.jpg',
+    });
+    link.appendTo($('body'));
+    link[0].click();
+    link.remove();
 }
 
 // Display the list of collections in the sidebar
 function displayCollections() {
-    const sidebar = document.querySelector('#sidebar');
+    const sidebar = $('#sidebar');
     const collections = photoData.collections.map((c) => `
     <li>
       <button class="collection-button" data-collection="${c.name}">
@@ -121,26 +126,20 @@ function displayCollections() {
       </button>
     </li>
   `).join('');
-    sidebar.innerHTML = `
+    sidebar.html(`
     <h2>Collections</h2>
     <ul>${collections}</ul>
-  `;
+  `);
 
     // Add event listeners to collection buttons and download buttons
-    const collectionButtons = document.querySelectorAll('.collection-button');
-    collectionButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const collectionName = button.dataset.collection;
-            displayPhotos(collectionName);
-        });
+    $('.collection-button').click((event) => {
+        const collectionName = $(event.target).data('collection');
+        displayPhotos(collectionName);
     });
 
-    const downloadButtons = document.querySelectorAll('.download-button');
-    downloadButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            const collectionName = button.dataset.collection;
-            downloadCollection(collectionName);
-        });
+    $('.download-button').click((event) => {
+        const collectionName = $(event.target).data('collection');
+        downloadCollection(collectionName);
     });
 }
 
@@ -150,18 +149,22 @@ function downloadCollection(collectionName) {
     if (collection) {
         const zip = new JSZip();
         const folder = zip.folder(collectionName);
-        collection.photos.forEach((photo, index) => {
+        const promises = collection.photos.map((photo, index) => {
             const filename = `photo${index + 1}.jpg`;
-            fetch(photo.src)
+            return fetch(photo.src)
                 .then((response) => response.blob())
                 .then((blob) => folder.file(filename, blob));
         });
-        zip.generateAsync({ type: 'blob' })
+        Promise.all(promises)
+            .then(() => zip.generateAsync({ type: 'blob' }))
             .then((content) => {
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(content);
-                link.download = `${collectionName}.zip`;
-                link.click();
+                const link = $('<a>').attr({
+                    href: URL.createObjectURL(content),
+                    download: `${collectionName}.zip`,
+                });
+                link.appendTo($('body'));
+                link[0].click();
+                link.remove();
             });
     }
 }
