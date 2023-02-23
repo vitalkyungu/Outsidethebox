@@ -184,3 +184,20 @@ function displayNavbar() {
     $('#upload-link').click(() => displayUploadForm());
     $('#create-collection-link').click(() => displayCreateCollectionForm());
 }
+
+
+function logout() {
+    // Clear the user session
+    sessionStorage.removeItem('user');
+
+    // Clear the local storage
+    localStorage.clear();
+
+    // Redirect the user to the login page
+    window.location.href = 'login.html';
+}
+
+function clearData() {
+    localStorage.clear();
+    alert('Data cleared!');
+}
