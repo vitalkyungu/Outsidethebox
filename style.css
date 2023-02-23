@@ -55,6 +55,9 @@
         padding: 0.5em 1em;
         cursor: pointer;
     }
+    a{
+        color: #fff;
+    }
 
     ul {
         list-style: none;
