@@ -168,3 +168,19 @@ function downloadCollection(collectionName) {
             });
     }
 }
+
+//this is for the navbar since i added the hover option
+function displayNavbar() {
+    const navbar = $('#navbar');
+    const links = `
+    <a href="#" class="nav-link" id="home-link">Home</a>
+    <a href="#" class="nav-link" id="upload-link">Upload</a>
+    <a href="#" class="nav-link" id="create-collection-link">Create Collection</a>
+  `;
+    navbar.html(links);
+
+    // Add event listeners to the navigation links
+    $('#home-link').click(() => displayCollections());
+    $('#upload-link').click(() => displayUploadForm());
+    $('#create-collection-link').click(() => displayCreateCollectionForm());
+}
