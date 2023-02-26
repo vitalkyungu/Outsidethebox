@@ -1,37 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OutsideThebox</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ouside_thebox</title>
+        <link rel="stylesheet" type="text/css"
+         href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"> </script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        <script src="script.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1>Outside_Thebox <a href="#"><img id="logo" src="OTBLOGO.JPG"></a> </h1>
-        
-        <nav>
-            <ul><li><a href="index.html">Upload</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="create-collection.html">Create Collection</a></li>
-            <li><a href="contacts.html">contacts</a></li></ul> 
-        </nav>
-    </header>
-    <main>
+    <div data-role="page" id="home">
+        <div data-role="header" data-theme="a">
+            <h1>Photo Gallery</h1>
+            <div data-role="navbar" data-theme="b">
+                <ul>
+                    <li><a href="#index">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#lcreate-collection">Create Collection</a></li>
+                </ul>
+            </div>
 
-        <section id="add-photos">
-            <h2>Add Photos</h2>
-            <form>
-                <label for="photo">Choose a photo:</label>
-                <input type="file" id="photo" name="photo">
-                <button type="submit">Upload</button>
-            </form>
-        </section>
-    </main>
-    <script src="script.js"></script>
+            <!--   page content -->
+            <div data-role="content" data-theme="b">
+
+                <main>
+                    <section id="add-photos">
+                        <h2>Add Photos</h2>
+                        <form>
+                            <label for="photo">Choose a photo:</label>
+                            <input type="file" id="photo" name="photo">
+                            <button type="submit">Upload</button>
+                        </form>
+                    </section>
+                </main>
+            </div>
+            <!--  page footer -->
+            <div data-role="footer" data-theme="b">
+                <h1>Copyrigtht 2023 by Vital kyungu</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of  page ------------------------------------------------------------------>
+
+    <div data-role="page“ id=" create-collection">
+        <!--  page header -->
+        <div data-role="header" data-theme="a">
+            <h1>Create Collection</h1>
+            <div data-role="navbar" data-theme="b">
+                <ul>
+                    <li><a href="#index">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#lcreate-collection">Create Collection</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="content" data-theme="b">
+            <main>
+                <form id="create-collection-form">
+                    <label for="collection-name">Collection Name:</label>
+                    <input type="text" id="collection-name" name="collection-name">
+                    <button type="submit">Create Collection</button>
+                </form>
+            </main>
+        </div>
+        <!--  page footer -->
+        <div data-role="footer" data-theme="b">
+            <h1>Copyrigtht 2023 by Vital kyungu</h1>
+        </div>
+
+        <!-- End of  page ------------------------------------------------------------------>
+
+
+        <!-- page content -->
+        <div data-role="page“ id=" gallery">
+            <div data-role="header">
+                <h1>Photo Gallery</h1>
+                <div data-role="navbar" data-theme="b">
+                    <ul>
+                        <li><a href="#index">Upload</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="content" data-theme="c">
+                <main>
+                    <section id="photo-gallery">
+                        <h2>Photo Gallery</h2>
+                        <ul>
+                            <!-- Display photos here -->
+                        </ul>
+                    </section>
+                </main>
+            </div>
+
+            <!--  page footer -->
+            <div data-role="footer" data-theme="b">
+                <h1>Copyrigtht 2023 by Vital kyungu</h1>
+            </div>
+        </div>
+    </div>
+    <!-- End of  page ------------------------------------------------------------------>
 </body>
 
 </html>
