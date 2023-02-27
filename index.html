@@ -22,6 +22,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#create-collection">Create Collection</a></li>
+                    <li><a href="#contact">Contact me</a></li>
                 </ul>
             </div>
 
@@ -103,9 +104,53 @@
             <div data-role="footer" data-theme="b">
                 <h1>Copyrigtht 2023 by Vital kyungu</h1>
             </div>
-        </div>
     </div>
     <!-- End of  page ------------------------------------------------------------------>
+    
+    <div data-role="page" id="contact">
+        <div data-role="header" data-theme="a">
+            <h1>How to contact me</h1>
+            <div data-role="navbar" data-theme="b">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#create-collection">Create Collection</a></li>
+                    <li><a href="#contact">Contact me</a></li>
+                </ul>
+            </div>
+            <div data-role="content" data-theme="c">
+                <main>
+                    <div class="container">
+                        <form action="action_page.php">
+                    
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    
+                            <label for="country">Country</label>
+                            <select id="country" name="country">
+                                <option value="australia">Australia</option>
+                                <option value="canada">Canada</option>
+                                <option value="usa">USA</option>
+                            </select>
+                    
+                            <label for="subject">Subject</label>
+                            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                    
+                            <input type="submit" value="Submit">
+                    
+                        </form>
+                    </div>
+                </main>
+            </div>
+            
+            <!--  page footer -->
+            <div data-role="footer" data-theme="b">
+                <h1>Copyrigtht 2023 by Vital kyungu</h1>
+            </div>
+            </div>
 </body>
 
 </html>
