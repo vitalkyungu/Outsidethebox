@@ -93,14 +93,14 @@
     .active {
         background-color: #d3761f;
     }
-    #logo {
+   /* #logo {
             display: inline-block;
             margin: 15px;       
             float:right;
             height: 40px;
             width: auto;
                   
-    }
+    }*/
 
 
         input[type=text],
