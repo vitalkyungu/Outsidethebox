@@ -73,23 +73,30 @@ createCollectionForm.on('submit', (event) => {
 
 // Display the photos stored in photoData for a specific collection
 function displayPhotos(collectionName) {
-    ul.empty();
-    const collection = photoData.collections.find((c) => c.name === collectionName);
-    if (collection) {
-        collection.photos.forEach((photo, index) => {
-            // Create the li and img elements
-            const li = $('<li></li>');
-            const img = $('<img>').attr('src', photo.src);
+    $(ul).empty();
+    if (photoData.collections) {
+        const collection = photoData.collections.find((c) => c.name === collectionName);
+        if (collection) {
+            collection.photos.forEach((photo, index) => {
+                // Create the li and img elements
+                const li = $('<li></li>');
+                const img = $('<img>').attr('src', photo.src);
 
-            // Add a new download button to download the photo
-            const downloadButton = $('<button>Download</button>');
-            downloadButton.on('click', () => downloadPhoto(photo.src));
+                // Add a new download button to download the photo
+                const downloadButton = $('<button>Download</button>');
+                downloadButton.click(() => downloadPhoto(photo.src));
 
-            // Add the download button to the li element
-            li.append(img, downloadButton);
+                // Add the download button to the li element
+                li.append(img, downloadButton);
 
-            // Add the li element to the ul element
-            ul.append(li);
-        });
+                // Add the li element to the ul element
+                ul.append(li);
+            });
+        }
     }
 }
+
+
+
+
+
