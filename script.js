@@ -2,7 +2,7 @@
 const photoData = JSON.parse(localStorage.getItem('photoData')) || { collections: [] };
 
 // Get references to the form and ul elements
-$('.my-selector:eq(0)').doSomething();
+const secondLi = $('ul li:eq(1)');
 const form = $('form');
 const ul = $('ul');
 
